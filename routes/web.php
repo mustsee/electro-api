@@ -14,3 +14,11 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('/env', function () {
+   return app()->environment();
+});
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('pieces', ['uses' => 'Controller@showPieces']);
+});
