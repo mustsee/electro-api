@@ -8,25 +8,25 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 
-class Genre extends Model implements AuthenticatableContract, AuthorizableContract
+class Piece extends Model implements AuthenticatableContract, AuthorizableContract
 {
     use Authenticatable, Authorizable;
 
-    protected $table = 'genres';
+    protected $table = 'pieces';
 
     protected $primaryKey = 'id';
 
-    protected $fillable = ['name'];
+    protected $fillable = ['artist_id', 'genre_id', 'title', 'type', 'hasVideoId'];
 
     public $timestamps = true;
 
     protected $hidden = [];
 
-    public function artists() {
-        return $this->belongsToMany(Artist::class, 'artists_genres', 'genre_id');
+    public function artist() {
+        return $this->belongsTo(Artist::class, 'artist_id', 'id');
     }
 
-    public function pieces() {
-        return $this->hasMany(Piece::class, 'genre_id', 'id');
+    public function genre() {
+        return $this->belongsTo(Genre::class, 'genre_id', 'id');
     }
 }

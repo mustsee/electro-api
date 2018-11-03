@@ -21,4 +21,5 @@ $router->get('/env', function () {
 
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('pieces', ['uses' => 'Controller@showPieces']);
+    $router->get('test', ['uses' => 'Controller@test']);
 });

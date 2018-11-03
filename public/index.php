@@ -1,7 +1,7 @@
 <?php
 
-if ($_SERVER['HTTP_ORIGIN'] == 'http://localhost:3001') {
-    header('Access-Control-Allow-Origin: http://localhost:3001');
+if ($_SERVER['HTTP_ORIGIN'] == 'http://localhost:3000') {
+    header('Access-Control-Allow-Origin: http://localhost:3000');
     header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
 }
 

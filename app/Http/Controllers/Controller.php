@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Genre;
+use App\Piece;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    public function showPieces () {
-        return response()->json(Genre::all('name'), 200);
+    public function showPieces()
+    {
+        return response()->json(Piece::with(['artist', 'genre'])->get(), 200);
+    }
+
+    public function test()
+    {
+
     }
 }
